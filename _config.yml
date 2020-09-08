@@ -1,0 +1,8 @@
+title: Matt's Blog
+description: A collection of articles Matt has written, largely focused on software engineering.
+theme: jekyll-theme-hacker
+plugins: 
+  - jekyll-feed
+exclude:
+  - README.md
+baseurl: "http://blog.con.rs"
