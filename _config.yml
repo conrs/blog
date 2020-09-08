@@ -5,4 +5,3 @@ plugins:
   - jekyll-feed
 exclude:
   - README.md
-baseurl: "http://blog.con.rs"
