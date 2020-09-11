@@ -1,5 +1,6 @@
 title: Matt's Blog
 description: A collection of articles Matt has written, largely focused on software engineering.
+url: "https://blog.con.rs"
 plugins: 
   - jekyll-seo-tag
   - jekyll-feed

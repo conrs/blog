@@ -149,9 +149,14 @@ dt {
   font-weight: bold;
 }
 
-ul li {
-  list-style-image:url('../images/bullet.png');
+ul.arrowy {
+  list-style:none;
 }
+
+ul.arrowy li:before {
+  content: "»";
+}
+
 
 blockquote {
   color: $blockquote-color;

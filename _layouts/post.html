@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+{% assign urlencoded_url = site.url | append: '' | append: page.url | url_encode %}
+
 <a href="/" style="display: block; margin-bottom:10px"> « Back to index </a>
 
 <h1> 
@@ -12,3 +14,42 @@ layout: default
 <p></p>
 
 {{ content }}
+
+
+<h1 style=";">Thanks for reading!</h1>
+
+If you enjoyed this content, please consider sharing it with your network.
+
+<ul class="arrowy">
+	<li>
+		<a href="https://www.facebook.com/sharer.php?u={{urlencoded_url}}">			Facebook
+		</a>
+	</li>
+	<li>
+		<a href="https://twitter.com/intent/tweet?url={{urlencoded_url}}&text=Via%20@conrs,%20check%20out%20this%20post">
+			Twitter
+		</a>
+	</li>
+	<li>
+		<a href="https://www.linkedin.com/shareArticle?url={{urlencoded_url}}&title={{page.title | url_encode}}&summary={{page.excerpt | strip_html | url_encode}}&source={{ 'https://www.linkedin.com/in/conrs/' | url_encode }}">
+			LinkedIn
+		</a>
+	</li>
+</ul>
+<div style="margin-bottom: 30vh;"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
