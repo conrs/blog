@@ -5,12 +5,14 @@ title: Blog
   {% for post in site.posts %}
   	<div style="margin-left:1vw;">
       <h2>» 
-      	{% if post.series %} 
+      	{% if post.series %}
       		<span style="color:darkgray"> 
-      			{{ site.data.series | where: 'id', post.series | map: 'title' }} 
+      			{{ site.data.series | where: 'id', post.series | map: 'title' }}
       		</span>
-      		/ 
+      		/
       	{% endif %} <a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <div style="margin-left:1vw;">{{ post.excerpt }}</div>
+			<div style="margin-left:1vw;margin-bottom:30px">
+				{{ post.excerpt }}
+				<a style="float:right;margin-top:-20px" href="{{ post.url }}">» Read more</a></div>
      </div>
   {% endfor %}
