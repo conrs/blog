@@ -5,7 +5,7 @@ layout: default
 
 <a href="/" style="display: block; margin-bottom:10px"> « Back to index </a>
 
-<h1> 
+<h1>
 	{{ page.title }}
 	<!-- <span class="highlight">
 		<h2 class="c">{{ page.date | date: '%B %d, %Y' }}</h2>
@@ -36,40 +36,42 @@ If you enjoyed this content, please consider sharing it with your network.
 	</li>
 </ul>
 
-{% assign series-posts = site.posts | reverse | where: 'series', page.series %}
-{% assign series = site.data.series | where: 'id', page.series %}
-{% if series-posts.size > 1 %}
+{% if page.series % }
+  {% assign series-posts = site.posts | reverse | where: 'series', page.series %}
+  {% assign series = site.data.series | where: 'id', page.series %}
+  {% if series-posts.size > 1 %}
 
-  {% for post in series-posts %}
-    {% if post.url == page.url %}
-      {% assign prev_post_index = forloop.index | minus: 1 %}
-      {% assign curr_post_index = forloop.index %}
-      {% assign next_post_index = forloop.index | plus: 1 %}
+    {% for post in series-posts %}
+      {% if post.url == page.url %}
+        {% assign prev_post_index = forloop.index | minus: 1 %}
+        {% assign curr_post_index = forloop.index %}
+        {% assign next_post_index = forloop.index | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+  <div style="color: #666;margin-top:50px">
+    <center>This post is {{ curr_post_index }} out of {{ series-posts.size }} in the <span class="highlight">{{ series | map: "title" }}</span> series.</center>
+
+
+    <div>
+    {% if prev_post_index > 0 %}
+      {% assign index = prev_post_index | minus: 1 %}
+      {% assign post = series-posts[index] %}
+      <a rel="prev" style="float: left" href="{{ site.baseurl }}{{ post.url }}">
+        « {{ post.title }}
+      </a>
     {% endif %}
-  {% endfor %}
-
-<div style="color: #666;margin-top:50px">
-  <center>This post is {{ curr_post_index }} out of {{ series-posts.size }} in the <span class="highlight">{{ series | map: "title" }}</span> series.</center>
-  
-
-  <div>
-  {% if prev_post_index > 0 %}
-    {% assign index = prev_post_index | minus: 1 %}
-    {% assign post = series-posts[index] %}
-    <a rel="prev" style="float: left" href="{{ site.baseurl }}{{ post.url }}">
-      « {{ post.title }}
-    </a>
-  {% endif %}
-  {% if next_post_index <= series-posts.size %}
-    {% assign index = next_post_index | minus: 1 %}
-    {% assign post = series-posts[index] %}
-    <a rel="next" style="float:right" href="{{ site.baseurl }}{{ post.url }}">
-      {{ post.title }} »
-    </a>
-  {% endif %}
+    {% if next_post_index <= series-posts.size %}
+      {% assign index = next_post_index | minus: 1 %}
+      {% assign post = series-posts[index] %}
+      <a rel="next" style="float:right" href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }} »
+      </a>
+    {% endif %}
+    </div>
   </div>
-</div>  
 
+  {% endif %}
 {% endif %}
 <div style="margin-bottom: 30vh;"/>
 
