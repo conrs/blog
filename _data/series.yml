@@ -3,3 +3,8 @@
   description:
     My take on standardization, built from experience before, during, and after attempts to do so 
     at companies of various sizes.
+
+- id: mash
+  title: mash
+  description:
+    Posts related to continued development of Matt's Awesome SHell.

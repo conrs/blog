@@ -1,5 +1,6 @@
 ---
 layout: post
+series: mash
 ---
 
 I decided recently to refactor [my homepage](http://con.rs), so as to better represent the way a bash shell works. This is because my site, while cute, didn't capture the best part of doing things [the Unix Way](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html) -- composability. 
@@ -43,7 +44,7 @@ Here's the things I have to get done before I deploy to [con.rs](http://con.rs).
 - Command history support
 - Paste support
 - Mobile support (touch events instead of keystrokes)
-- Tab completion 
+- Tab completion
 - HTML-friendly buffer that line breaks based on _visible_ text
 - "Say" command (obviously)
 - An actual thought out bio
@@ -51,7 +52,7 @@ Here's the things I have to get done before I deploy to [con.rs](http://con.rs).
 
 
 Here's the things rattling around my brain it would be nice to fix:
-- Split some of the responsibilities of the shell out into their own commands. 
+- Split some of the responsibilities of the shell out into their own commands.
 	- e.g. command history is a very simple script on its own.
 - Clean up my buffer tech debt, make an elegant implementation for multiline
 - More silly web things to make a command abstraction over

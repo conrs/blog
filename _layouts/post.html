@@ -36,7 +36,7 @@ If you enjoyed this content, please consider sharing it with your network.
 	</li>
 </ul>
 
-{% if page.series % }
+{% if page.series %}
   {% assign series-posts = site.posts | reverse | where: 'series', page.series %}
   {% assign series = site.data.series | where: 'id', page.series %}
   {% if series-posts.size > 1 %}
