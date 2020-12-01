@@ -4,15 +4,66 @@
 @import 'jekyll-theme-hacker';
 
 ul.series-posts {
+  border-left: solid 2px $conifer;
   list-style-type: none;
-  padding: 0px;
-  margin-left: -5px;
+  margin-left: 10vw;
+  padding-left: 10vw;
+  margin-top: -10px;
+  padding-top: 20px;
+}
+
+ul.series-list {
+  list-style-type: none;
+  border-left: solid 2px $conifer;
+
+  padding: 10vw;
+  padding-top:30px;
+}
+
+ul.series-posts li {
+  list-style-type: none;
+  list-style-position:inside;
+  margin-left:-10vw;
+  margin-bottom: 10px;
+}
+
+ul.series-list li {
+  list-style-type: none;
+  list-style-position:inside;
+  margin-left:-10vw;
+  margin-bottom: 10px;
+}
+
+li div.text {
+  margin-left: 25px;
+  margin-top:-5px;
+  display:inline-block;
+  position:absolute;
+}
+
+div.hr-container {
+  width: 10vw;
+  display: inline-block;
+}
+
+div.hr-container hr {
+  border: 1px solid $conifer
+}
+
+div.little-square {
+  width:10px;
+  height:10px;
+  background-color:#b5e853;
 }
 
 
-
-ul.series-posts li:before {
-  content: "-";
-  font-size: 20pt;
-  color: $conifer
+.left-big-square {
+  display: inline-block;
+  position:absolute;
+  margin-top:-0px;
+  margin-right: 10px;
+  margin-left:-9px;
+  width:20px;
+  height:20px;
+  background-color:#b5e853;
 }

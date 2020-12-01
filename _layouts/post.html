@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign urlencoded_url = site.url | append: '' | append: page.url | url_encode %}
 
-<a href="/" style="display: block; margin-bottom:10px"> « Back to index </a>
+<a href="/" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.back(); return false; }" .style="display: block; margin-bottom:10px"> « Back to index </a>
 
 <h1>
 	{{ page.title }}
