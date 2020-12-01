@@ -2,3 +2,17 @@
 ---
 
 @import 'jekyll-theme-hacker';
+
+ul.series-posts {
+  list-style-type: none;
+  padding: 0px;
+  margin-left: -5px;
+}
+
+
+
+ul.series-posts li:before {
+  content: "-";
+  font-size: 20pt;
+  color: $conifer
+}

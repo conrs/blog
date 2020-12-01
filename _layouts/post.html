@@ -50,7 +50,7 @@ If you enjoyed this content, please consider sharing it with your network.
     {% endfor %}
 
   <div style="color: #666;margin-top:50px">
-    <center>This post is {{ curr_post_index }} out of {{ series-posts.size }} in the <span class="highlight">{{ series | map: "title" }}</span> series.</center>
+    <center>This post is {{ curr_post_index }} out of {{ series-posts.size }} in the <a class='highlight' href="/series#{{series | map: 'id' }}">{{ series | map: "title" }}</a> series.</center>
 
 
     <div>

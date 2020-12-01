@@ -7,4 +7,5 @@
 - id: mash
   title: mash
   description:
-    Posts related to continued development of Matt's Awesome SHell.
+    Miscellaneous experiences while developing http://conrs.github.io/mash/. Mash is a fun anachronism that demonstrates
+    using streams as the sole means of communication, and composing commands together to achieve higher level power.
