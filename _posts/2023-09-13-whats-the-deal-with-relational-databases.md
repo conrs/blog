@@ -4,7 +4,9 @@ title: "What's the deal with Relational Databases?"
 excerpt_separator: <!--more-->
 ---
 
-I recently wrote an internal blog post at [Truepill](https://truepill.com) to make relational databases a little more approachable for folks that are coming from a more document-oriented world. The main things to get used to were:
+I recently wrote an internal blog post at [Truepill](https://truepill.com) intended to make relational databases a little more approachable for folks that are coming from a more document-oriented world. 
+
+Given the positive internal receiption, I decided to create a public version. The main things I covered were:
 - Schemas
 - Normalization of Data
 - Relationships
@@ -56,7 +58,7 @@ To keep things simple, let's just pretend nulls are okay for now. The revised mi
 ALTER TABLE fortunes ADD COLUMN author varchar(150);
 ```
 
-Once applying the above two migrations, here's how our table looks:
+Once the above two migrations are applied, here's how our table looks:
 
 ```plaintext
 +---------+------------------------+-----------+
