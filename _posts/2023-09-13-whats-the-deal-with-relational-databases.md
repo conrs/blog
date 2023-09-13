@@ -71,7 +71,7 @@ Once the above two migrations are applied, here's how our table looks:
 
 This layered approach lets us evolve our data model over time, but it also forces us to evolve our understanding of our data model right alongside it, and helps catch edge cases related to existing data that might not fit so nicely into our new schema.
 
-While it isn't often the best choice for rapid prototyping, it often starts to pay off quickly as projects move past MVP, or teams grow large enough that knowledge becomes diffused. The database ends up containing everything you need to understand the data in the database, which helps folks familiar with relational databases orient themselves quickly.
+While it isn't always the best choice for rapid prototyping, it often starts to pay off quickly as projects move past MVP, or teams grow large enough that knowledge becomes diffused. The database ends up containing everything you need to understand the data in the database, which helps folks familiar with relational databases orient themselves quickly.
 
 ## Data Normalization
 
