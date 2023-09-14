@@ -4,11 +4,11 @@ title: "What's the deal with Relational Databases?"
 excerpt_separator: <!--more-->
 ---
 
-I recently wrote an internal blog post at [Truepill](https://truepill.com) intended to make relational databases a little more approachable for folks that are coming from a more document-oriented world. 
+I recently wrote an internal blog post at [Truepill](https://truepill.com) intended to make relational databases a little more approachable for folks that are coming from a more document-oriented world.
 
-Given the positive internal receiption, I decided to create a public version. The main things I covered were:
-- Schemas
-- Normalization of Data
+Given the positive internal reception, I decided to create a public version. The main things I covered were:
+- Schemas,
+- Normalization of Data, and
 - Relationships
 
 <!--more-->
@@ -30,12 +30,10 @@ CREATE TABLE fortunes (
 );
 
 INSERT INTO fortunes(fortune) VALUES
-       ('Land is always on the mind of a flying bird.'),
-       ('LIFE CONSISTS NOT IN HOLDING GOOD CARDS, BUT IN PLAYING THOSE YOU HOLD WELL.'),
-       ('If you look back, you''ll soon be going that way.'),
-       ('The fortune you seek is in another cookie.'),
-       ('The love of your life is stepping into your planet this summer.'),
-       ('Help! I am being held prisoner in a fortune cookie factory.');
+       ('You will die a terrible death.'),
+       ('You will live a good life.'),
+       ('You''re going to be hungry.'),
+       ('You''re going to be alright.');
 
 -- Many more fortunes, but you get the idea.
 ```
@@ -47,6 +45,10 @@ Should we wish to extend this table, we would write a migration that works on to
 `00020_add-author-to-fortunes.sql`
 ```sql
 ALTER TABLE fortunes ADD COLUMN author varchar(150) not null;
+```
+
+```plaintext
+ERROR:  column "author" of relation "fortunes" contains null values
 ```
 
 The database, intelligently, will complain that `author` currently has null values, despite the `not null` constraint put upon the `author` column. This is because `fortunes` already has existing data, which needs to be brought along for the ride with this schema change.
@@ -83,6 +85,16 @@ Further, maybe there is other information about authors it would be helpful to r
 
 While we could modify the column to be `JSON` and call it a day, it still wouldn't remedy the fact that the same author could show up multiple times, and even worse, if we ever needed to update the stored author information, we'd have to update every single row that stored it, which has substantial consistency risks.
 
+`00030_add-author-table.sql`
+```sql
+ALTER TABLE fortunes ADD COLUMN id serial primary key;
+ALTER TABLE fortunes DROP COLUMN author;
+
+CREATE TABLE authors (
+  id serial primary key,
+  name varchar(150)
+);
+```
 ```plaintext
 +--------------------------+                               +---------------------------+
 | Authors                  |                               | Fortunes                  |
@@ -103,6 +115,14 @@ Sometimes, indexes and primary keys can involve more than one column. These are 
 
 There's one crucial piece of data not captured yet in the above diagram - the relationship between authors and their fortunes. This is just another table, so let's pop it in!
 
+`00040_add-author-fortunes-table.sql`
+```sql
+CREATE TABLE author_fortunes (
+  author_id integer not null references authors(id) on delete cascade,
+  fortune_id integer not null references fortunes(id) on delete cascade,
+  primary key(author_id, fortune_id)
+);
+```
 ```plaintext
         +--------------------------+                               +---------------------------+
         | Authors                  |                               | Fortunes                  |
@@ -131,20 +151,24 @@ There's one crucial piece of data not captured yet in the above diagram - the re
 
 Whoa! Arrows! Relationship tables! What this diagram says is, now we have an Author_Fortunes table that references the id from the Authors table, and the id from the Fortunes table. Those with a keen eye may also notice that the primary key of Author_Fortunes is a composite key of (author_id, fortune_id), meaning that the same relationship couldn't be stored more than once.
 
-This is an example of a Many-to-Many relationship. Note that we couldn't put a `fortune_id` in the Authors table without saying that the Author could have only ever written one fortune. Similarly, we couldn't put the `author_id` in the Fortunes table without saying that a given fortune could only have been written by one author... er, wait a second - we can totally say that! Let's update our diagram to reflect this:
+This is an example of a Many-to-Many relationship. Note that we couldn't put a `fortune_id` in the Authors table without saying that the Author could have only ever written one fortune. Similarly, we couldn't put the `author_id` in the Fortunes table without saying that a given fortune could only have been written by one author... er, wait a second - we can totally say that! Let's update our database to reflect this:
 
+`00050_change-author-fortunes.sql`
+```sql
+DROP TABLE author_fortunes;
+
+ALTER TABLE fortunes ADD COLUMN author_id integer references authors(id);
+```
 ```plaintext
-      +--------------------------+                               +---------------------------------+
-      | Authors                  |                               | Fortunes                        |
-      +--------------------------+                               +---------------------------------+
-+---> | *   id integer not null  |                               | *   id integer not null         |
-|     +--------------------------+                               +---------------------------------+
-|     | **  name varchar(150)    |                               | **  fortune varchar(150)        |
-|     +--------------------------+                               +---------------------------------+
-|                                                          +---+ | *** author_id integer not null  |
-|                                                          |     +---------------------------------+
-|                                                          |
-+----------------------------------------------------------+
++--------------------------------+                        +--------------------------+
+| Fortunes                       |                        | Authors                  |
++--------------------------------+                        +--------------------------+
+| *   id integer not null        |            +---------> | *   id integer not null  |
++--------------------------------+            |           +--------------------------+
+| **  fortune varchar(150)       |            |           | **  name varchar(150)    |
++--------------------------------+            |           +--------------------------+
+| *** author_id integer          | +----------+
++--------------------------------+
 ```
 
 Now we have correctly represented that a Fortune can have one author, but an author can have many fortunes. I believe Confucious is quite a prolific author of fortunes, for example. However, if we ever wanted to represent collaborative fortune-writing, we could always reintroduce the Many-to-Many relationship later.
@@ -161,6 +185,22 @@ The real fun comes in when you start figuring out how to use schemas and relatio
 
 For this, let's populate our tables with some data.
 
+`00060_add-authors-improve-integrity.sql`
+```sql
+INSERT INTO authors(name) VALUES
+  ('Joe'),
+  ('Mortimer'),
+  ('Frank'),
+  ('Mindy'),
+  ('Sue');
+
+UPDATE fortunes SET author_id = 1 WHERE id = 1;
+UPDATE fortunes SET author_id = 2 WHERE id = 2;
+UPDATE fortunes SET author_id = 2 WHERE id = 3;
+UPDATE fortunes SET author_id = 5 WHERE id = 4;
+
+ALTER TABLE fortunes ALTER COLUMN author_id SET NOT NULL;
+```
 ```plaintext
       +--------------------------+                    +---------------------------------+
       | Authors                  |                    | Fortunes                        |
