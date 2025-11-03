@@ -1,9 +1,10 @@
 title: Matt's Blog
 description: A collection of articles Matt has written, largely focused on software engineering.
 url: "https://blog.con.rs"
+excerpt_separator: <!--more-->
 plugins: 
   - jekyll-seo-tag
   - jekyll-feed
 exclude:
   - README.md
-google_analytics: UA-179954436-1
+# google_analytics: UA-179954436-1

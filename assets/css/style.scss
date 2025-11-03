@@ -50,6 +50,14 @@ div.hr-container hr {
   border: 1px solid $conifer
 }
 
+
+hr.excerpt-separator { 
+  height: 2px;
+  border-top: 1px solid #3c3d3a;
+  border-bottom: 1px solid #3c3d3a;
+  color: #b5e853;
+}
+
 div.little-square {
   width:10px;
   height:10px;
