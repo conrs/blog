@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When Builders became Bullies"
-image: 2025_11_12-when-builders-became-bullies.jpg
+image: /assets/images/2025_11_12-when-builders-became-bullies.jpg
 show-image: true
 ---
 

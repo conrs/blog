@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Shipping Software Just-in-Time"
-excerpt_separator: <!--more-->
-image: 2024_05_08-og-image.png
+image: /assets/images/2024_05_08-og-image.png
 ---
 There's always been a certain disdain in software circles for management techniques from other industries. With things like the mythical man month, the Agile industrial complex, and the myriad of failed attempts to measure productivity, most software engineers develop a bias early in their career, then as they gain experience, also gain significant blind spots for techniques and learnings from other industries that would help substantially with the problems they face.
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "What's the deal with Relational Databases?"
-excerpt_separator: <!--more-->
 ---
 
 I recently wrote an internal blog post at [Truepill](https://truepill.com) intended to make relational databases a little more approachable for folks that are coming from a more document-oriented world.

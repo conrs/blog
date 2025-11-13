@@ -2,7 +2,6 @@
 layout: post
 series: mash
 title: Hello Again, World
-excerpt_separator: <!--more-->
 ---
 
 I finally took the time to put the rewrite of mash [online](https://conrs.github.io/mash).

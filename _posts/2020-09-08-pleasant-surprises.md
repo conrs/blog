@@ -4,6 +4,8 @@ layout: post
 
 I started this evening totally set on building my own static website generator, based off a GitHub Repository and some Markdown, then caught up to the rest of the world and realized Github Pages already did all of that for me. So, I find myself now with the problem all bloggers face - the part where you actually write content. Rather than do the classic hopeful first blog post, where I promise tons of content, I figured it would be fun to review my spotty blogging history, in no particular order. 
 
+<!--more-->
+
 ## Method
 
 I used the [Wayback machine](https://web.archive.org/) to find my [old company's website](https://web.archive.org/web/20111009005433/http://www.digihedron.com/), then found a link from the Team page to [my blog](https://web.archive.org/web/20120511083709/http://blog.omgz0r.net/). This is the earliest blog I remember currently. 

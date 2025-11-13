@@ -5,6 +5,8 @@ series: mash
 
 I decided recently to refactor [my homepage](http://con.rs), so as to better represent the way a bash shell works. This is because my site, while cute, didn't capture the best part of doing things [the Unix Way](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html) -- composability. 
 
+<!--more-->
+
 ## Before
 
 The site used to accept commands using a hidden `input` DOM element, then echoed those to a "command line" `div`, which had a blinking cursor anchored to its right (so as the command grew, the cursor would move). Further, the system printed a command prompt. 

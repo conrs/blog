@@ -2,7 +2,6 @@
 layout: post
 series: standardization
 title: "\"What\" vs. \"Why\""
-excerpt_separator: <!--more-->
 ---
 
 Standardization is one of the hardest things an engineering organization can do, especially when it's also trying to ship new products. 

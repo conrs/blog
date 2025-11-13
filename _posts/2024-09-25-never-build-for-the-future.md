@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Never build for the future"
-excerpt_separator: <!--more-->
 ---
 
 After a couple years of programming are under your belt, it's likely you'll fall into the trap of building for the future. This feels like a good thing to do, especially when you are dealing with technical debt from folks who _didn't_ build for the future. However, if this resonates with you, let me save you some grief: **It's a waste of time!**

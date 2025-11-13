@@ -1,6 +1,5 @@
 ---
 layout: post
-excerpt_separator: <!--more-->
 ---
 
 At LiveRamp, I built a lot of TypeScript services. Coming from Scala, I was very hesitant at first to move to a less strict environment, and I was also wary about structural typing. However, after having used it as well as onboarded engineers to it, I can't recommend it enough.

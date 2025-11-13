@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Look for Average Advice"
-image: 2025_11_03-average-hero.png
+image: /assets/images/2025_11_03-average-hero.png
+show-image: true
 ---
 
 We talk to users and subject matter experts to understand what to build. But when we're unsure _how_ to build it, we look to experts - people who've solved hard problems before. The trouble is, their solutions often lead us straight into failure. Our problems aren't hard yet, just new.
